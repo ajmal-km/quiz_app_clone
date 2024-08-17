@@ -62,7 +62,7 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "${rightAnsCount} / ${QuizDatabase.questions.length}",
+                "$rightAnsCount / ${QuizDatabase.questions.length}",
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 32,
@@ -74,19 +74,19 @@ class ResultScreen extends StatelessWidget {
               Text(
                 "Correct Answers: $rightAnsCount",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorConstants.fontWhite,
                 ),
               ),
               Text(
                 "Wrong Answers: $wrongAnsCount",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorConstants.fontWhite,
                 ),
               ),
               Text(
                 "Skipped Questions: 0",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorConstants.fontWhite,
                 ),
               ),
             ],
@@ -113,21 +113,21 @@ class ResultScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.deepOrange,
                   borderRadius: BorderRadius.circular(13),
-                  border: Border.all(width: 2.8, color: Colors.white),
+                  border: Border.all(width: 2.8, color: ColorConstants.fontWhite),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
                       Icons.replay,
-                      color: Colors.white,
+                      color: ColorConstants.fontWhite,
                       size: 26,
                     ),
                     SizedBox(width: 10),
                     Text(
                       "Restart",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ColorConstants.fontWhite,
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
                         letterSpacing: -0.7,

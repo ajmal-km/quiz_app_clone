@@ -42,7 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
         Text(
           "${questionIndex + 1}/${QuizDatabase.questions.length}",
           style: TextStyle(
-            color: Colors.blue[700],
+            color: ColorConstants.blue,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
@@ -54,31 +54,31 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget _buildOptionSelectionSection() {
     return Column(
-          children: List.generate(
-            4,
-            (index) => OptionsCard(
-              borderColor: _getColor(index),
-              questionIndex: questionIndex,
-              optionIndex: index,
-              selectedIcon: selectedAnswerIndex == index
-                  ? Icons.radio_button_on
-                  : Icons.radio_button_off,
-              onOptionTap: () {
-                if (selectedAnswerIndex == null) {
-                  setState(() {
-                    selectedAnswerIndex = index;
-                    if (selectedAnswerIndex ==
-                        QuizDatabase.questions[questionIndex]["answer"]) {
-                      rightAnswerCount++;
-                    } else {
-                      wrongAnswerCount++;
-                    }
-                  });
+      children: List.generate(
+        4,
+        (index) => OptionsCard(
+          borderColor: _getColor(index),
+          questionIndex: questionIndex,
+          optionIndex: index,
+          selectedIcon: selectedAnswerIndex == index
+              ? Icons.radio_button_on
+              : Icons.radio_button_off,
+          onOptionTap: () {
+            if (selectedAnswerIndex == null) {
+              setState(() {
+                selectedAnswerIndex = index;
+                if (selectedAnswerIndex ==
+                    QuizDatabase.questions[questionIndex]["answer"]) {
+                  rightAnswerCount++;
+                } else {
+                  wrongAnswerCount++;
                 }
-              },
-            ),
-          ),
-        );
+              });
+            }
+          },
+        ),
+      ),
+    );
   }
 
   Widget? _buildNextButtonSection(BuildContext context) {
@@ -110,13 +110,13 @@ class _QuizScreenState extends State<QuizScreen> {
                 height: 50,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.blue[800],
+                  color: ColorConstants.blue,
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: Text(
                   "Next",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: ColorConstants.fontWhite,
                     fontSize: 25,
                     fontWeight: FontWeight.w500,
                     letterSpacing: -1,
@@ -130,17 +130,17 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget _buildQuestionSection() {
     return Container(
       height: 200,
-      alignment: Alignment.center,
+      alignment: Alignment.centerLeft,
       padding: EdgeInsets.all(17),
       decoration: BoxDecoration(
-        color: Colors.grey[800],
+        color: ColorConstants.containerGrey,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
         QuizDatabase.questions[questionIndex]["question"],
         textAlign: TextAlign.justify,
         style: TextStyle(
-          color: Colors.white,
+          color: ColorConstants.fontWhite,
           fontSize: 20,
           fontWeight: FontWeight.w400,
         ),

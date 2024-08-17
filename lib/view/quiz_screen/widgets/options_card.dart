@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 
 class OptionsCard extends StatelessWidget {
@@ -36,7 +37,7 @@ class OptionsCard extends StatelessWidget {
               Text(
                 QuizDatabase.questions[questionIndex]["options"][optionIndex],
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorConstants.fontWhite,
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
                 ),

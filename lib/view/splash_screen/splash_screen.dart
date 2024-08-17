@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Text(
             "Quiz App",
             style: TextStyle(
-              color: Colors.white,
+              color: ColorConstants.fontWhite,
               fontSize: 40,
               letterSpacing: -1.5,
             ),
