@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
+import 'package:quiz_app_clone/utils/image_constants.dart';
+import 'package:quiz_app_clone/view/category_screen/category_screen.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
-import 'package:quiz_app_clone/view/quiz_screen/quiz_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => QuizScreen(),
+            builder: (context) => CategoryScreen(),
           ),
         );
       },
@@ -43,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.network(
-            "https://i.pinimg.com/564x/c7/38/85/c73885828826baf41c9bdae6aadbff85.jpg",
+            ImageConstants.LOGO,
             height: 180,
             width: 200,
           ),
@@ -52,6 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
             style: TextStyle(
               color: ColorConstants.fontWhite,
               fontSize: 40,
+              fontWeight: FontWeight.w300,
               letterSpacing: -1.5,
             ),
           ),

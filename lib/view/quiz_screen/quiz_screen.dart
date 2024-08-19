@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 import 'package:quiz_app_clone/view/quiz_screen/widgets/options_card.dart';
@@ -21,14 +23,15 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       backgroundColor: ColorConstants.mainBlack,
       appBar: _buildAppBarSection(),
-      body: ListView(
-        physics: NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.all(18),
-        children: <Widget>[
-          _buildQuestionSection(),
-          SizedBox(height: 10),
-          _buildOptionSelectionSection(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          children: <Widget>[
+            _buildQuestionSection(),
+            SizedBox(height: 10),
+            _buildOptionSelectionSection(),
+          ],
+        ),
       ),
       bottomNavigationBar: _buildNextButtonSection(context),
     );
@@ -60,9 +63,7 @@ class _QuizScreenState extends State<QuizScreen> {
           borderColor: _getColor(index),
           questionIndex: questionIndex,
           optionIndex: index,
-          selectedIcon: selectedAnswerIndex == index
-              ? Icons.radio_button_on
-              : Icons.radio_button_off,
+          selectedIcon: _getOptionIcon(index),
           onOptionTap: () {
             if (selectedAnswerIndex == null) {
               setState(() {
@@ -128,24 +129,49 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget _buildQuestionSection() {
-    return Container(
-      height: 200,
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.all(17),
-      decoration: BoxDecoration(
-        color: ColorConstants.containerGrey,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Text(
-        QuizDatabase.questions[questionIndex]["question"],
-        textAlign: TextAlign.justify,
-        style: TextStyle(
-          color: ColorConstants.fontWhite,
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: 360,
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: ColorConstants.containerGrey,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Text(
+            QuizDatabase.questions[questionIndex]["question"],
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              color: ColorConstants.fontWhite,
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
         ),
-      ),
+        selectedAnswerIndex == QuizDatabase.questions[questionIndex]["answer"]
+            ? LottieBuilder.asset("assets/animations/popper.json",
+                width: double.infinity, height: 360)
+            : SizedBox(),
+      ],
     );
+  }
+
+  IconData _getOptionIcon(int index) {
+    if (selectedAnswerIndex != null) {
+      if (selectedAnswerIndex == index) {
+        if (selectedAnswerIndex ==
+            QuizDatabase.questions[questionIndex]["answer"]) {
+          return Icons.check_box_rounded;
+        } else {
+          return Icons.disabled_by_default_rounded;
+        }
+      }
+      if (index == QuizDatabase.questions[questionIndex]["answer"]) {
+        return Icons.check_box_rounded;
+      }
+    }
+    return Icons.check_box_outline_blank_rounded;
   }
 
   Color _getColor(int index) {
