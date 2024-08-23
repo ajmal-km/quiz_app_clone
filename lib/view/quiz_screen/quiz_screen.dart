@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
@@ -132,7 +131,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return Stack(
       children: <Widget>[
         Container(
-          height: 360,
+          height: 300,
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -151,7 +150,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         selectedAnswerIndex == QuizDatabase.questions[questionIndex]["answer"]
             ? LottieBuilder.asset("assets/animations/popper.json",
-                width: double.infinity, height: 360)
+                width: double.infinity, height: 300)
             : SizedBox(),
       ],
     );

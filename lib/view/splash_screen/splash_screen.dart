@@ -3,6 +3,7 @@ import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/utils/image_constants.dart';
 import 'package:quiz_app_clone/view/category_screen/category_screen.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
+// import 'package:quiz_app_clone/view/quiz_screen/quiz_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

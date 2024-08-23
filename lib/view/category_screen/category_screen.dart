@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/utils/image_constants.dart';
+import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -34,7 +35,7 @@ class CategoryScreen extends StatelessWidget {
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
               ),
-              itemCount: 8,
+              itemCount: QuizDatabase.quizList.length,
               itemBuilder: (context, index) => Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -45,17 +46,26 @@ class CategoryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Icon(
-                      Icons.sports_basketball,
+                      Icons.menu_book_rounded,
                       size: 80,
-                      color: Colors.deepOrange[400],
+                      color: Colors.deepOrange[300],
                     ),
                     Text(
-                      "Sports",
+                      QuizDatabase.quizList[index]["name"],
                       style: TextStyle(
                         color: ColorConstants.fontWhite,
                         fontSize: 25,
                         fontWeight: FontWeight.w400,
                         letterSpacing: -0.3,
+                      ),
+                    ),
+                    Text(
+                      "${QuizDatabase.quizList[index]["list".length]} questions",
+                      style: TextStyle(
+                        color: ColorConstants.fontWhite,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.1,
                       ),
                     ),
                   ],
