@@ -218,8 +218,7 @@ class _ResultScreenState extends State<ResultScreen> {
   }
 
   int calPercentage() {
-    double percentage =
-        (widget.rightAnsCount / QuizDatabase.questions.length) * 100;
+    double percentage = (widget.rightAnsCount / widget.questions.length) * 100;
     if (percentage >= 80) {
       return 3;
     } else if (percentage >= 50) {
