@@ -82,7 +82,6 @@ class CategoryScreen extends StatelessWidget {
             ),
             itemCount: QuizDatabase.quizList.length,
             itemBuilder: (context, index) => CategoryGrid(
-              categoryIndex: index,
               title: QuizDatabase.quizList[index]["name"],
               questions: QuizDatabase.quizList[index]["list"],
               image: ImageConstants.categoryImages[index],

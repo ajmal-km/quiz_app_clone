@@ -4,14 +4,12 @@ import 'package:quiz_app_clone/utils/color_constants.dart';
 class CategoryGrid extends StatelessWidget {
   const CategoryGrid({
     super.key,
-    required this.categoryIndex,
     required this.title,
     required this.questions,
     required this.image,
     this.onGridTap,
   });
 
-  final int categoryIndex;
   final String title;
   final List questions;
   final String image;
