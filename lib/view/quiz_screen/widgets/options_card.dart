@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
-import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 
 class OptionsCard extends StatelessWidget {
   const OptionsCard({
     super.key,
-    required this.questionIndex,
+    required this.options,
     required this.optionIndex,
     required this.borderColor,
     required this.selectedIcon,
     this.onOptionTap,
   });
 
-  final int questionIndex;
+  final List options;
   final int optionIndex;
   final Color borderColor;
   final IconData selectedIcon;
@@ -35,7 +35,7 @@ class OptionsCard extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Text(
-                QuizDatabase.questions[questionIndex]["options"][optionIndex],
+                options[optionIndex],
                 style: TextStyle(
                   color: ColorConstants.fontWhite,
                   fontSize: 15,
@@ -43,7 +43,7 @@ class OptionsCard extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Icon(
+              FaIcon(
                 selectedIcon,
                 size: 21,
                 color: borderColor,

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
 import 'package:quiz_app_clone/utils/image_constants.dart';
 import 'package:quiz_app_clone/view/category_screen/category_screen.dart';
-import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
-// import 'package:quiz_app_clone/view/quiz_screen/quiz_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +17,6 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 3),
     ).then(
       (value) {
-        QuizDatabase.questions.shuffle();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -44,10 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.network(
+          Image.asset(
             ImageConstants.LOGO,
-            height: 180,
-            width: 200,
+            height: 140,
+            width: 140,
           ),
           Text(
             "Quiz App",

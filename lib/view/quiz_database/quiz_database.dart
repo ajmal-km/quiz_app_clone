@@ -72,16 +72,14 @@ class QuizDatabase {
     },
   ];
 
-  
-
   static List quizList = [
     {
       "name": "Sports",
       "list": [
         {
-          "question": "Which country won the FIFA World Cup in 2018?",
+          "question": "Which country won the FIFA World Cup in 2022?",
           "options": ["Brazil", "Germany", "France", "Argentina"],
-          "answer": 2,
+          "answer": 3,
         },
         {
           "question":
@@ -811,6 +809,399 @@ class QuizDatabase {
           ],
           "answer": 0,
         },
+      ],
+    },
+    {
+      "name": "Technology",
+      "list": [
+        {
+          "question": "What is the main purpose of a CPU?",
+          "options": [
+            "Processing instructions",
+            "Storing data",
+            "Handling user input",
+            "Managing power"
+          ],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question":
+              "Which technology is used for developing web applications?",
+          "options": ["HTML", "CSS", "JavaScript", "All of the above"],
+          "answer": 3, // Index of the correct answer
+        },
+        {
+          "question": "What does RAM stand for?",
+          "options": [
+            "Read Access Memory",
+            "Random Access Memory",
+            "Run Access Memory",
+            "Read Active Memory"
+          ],
+          "answer": 1, // Index of the correct answer
+        },
+        {
+          "question": "Which company developed the Android operating system?",
+          "options": ["Apple", "Microsoft", "Google", "IBM"],
+          "answer": 2, // Index of the correct answer
+        },
+        {
+          "question": "What is a firewall used for?",
+          "options": [
+            "Protecting a network",
+            "Encrypting data",
+            "Storing passwords",
+            "Creating backups"
+          ],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question": "What does URL stand for?",
+          "options": [
+            "Uniform Resource Locator",
+            "Uniform Retrieval Locator",
+            "Universal Resource Link",
+            "Uniform Resource Link"
+          ],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question": "What is the function of an operating system?",
+          "options": [
+            "Manage hardware resources",
+            "Run applications",
+            "Provide a user interface",
+            "All of the above"
+          ],
+          "answer": 3, // Index of the correct answer
+        },
+        {
+          "question":
+              "Which programming language is known for its use in data science and machine learning?",
+          "options": ["JavaScript", "Python", "Ruby", "Swift"],
+          "answer": 1, // Index of the correct answer
+        },
+        {
+          "question": "What does HTTP stand for?",
+          "options": [
+            "HyperText Transfer Protocol",
+            "HyperText Transmission Protocol",
+            "HighText Transfer Protocol",
+            "HyperLink Transfer Protocol"
+          ],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question": "What is a database?",
+          "options": [
+            "A system for managing files",
+            "A collection of organized data",
+            "A software for developing websites",
+            "A type of computer hardware"
+          ],
+          "answer": 1, // Index of the correct answer
+        },
+        {
+          "question": "What technology is commonly used for version control?",
+          "options": ["Git", "Jira", "Docker", "AWS"],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question":
+              "Which protocol is used for secure communication over a network?",
+          "options": ["FTP", "SMTP", "HTTPS", "HTTP"],
+          "answer": 2, // Index of the correct answer
+        },
+        {
+          "question": "What is the purpose of a web server?",
+          "options": [
+            "Host websites",
+            "Manage email",
+            "Provide internet access",
+            "Encrypt data"
+          ],
+          "answer": 0, // Index of the correct answer
+        },
+        {
+          "question":
+              "Which technology is associated with creating responsive web designs?",
+          "options": ["CSS Flexbox", "JavaScript", "HTML", "PHP"],
+          "answer": 0, // Index of the correct answer
+        },
+      ],
+    },
+    {
+      "name": "Books",
+      "list": [
+        {
+          "question": "Who wrote 'To Kill a Mockingbird'?",
+          "options": [
+            "Harper Lee",
+            "Mark Twain",
+            "Ernest Hemingway",
+            "F. Scott Fitzgerald"
+          ],
+          "answer": 0
+        },
+        {
+          "question":
+              "What is the title of the first book in the Harry Potter series?",
+          "options": [
+            "Harry Potter and the Chamber of Secrets",
+            "Harry Potter and the Goblet of Fire",
+            "Harry Potter and the Philosopher's Stone",
+            "Harry Potter and the Prisoner of Azkaban"
+          ],
+          "answer": 2
+        },
+        {
+          "question":
+              "Which book series features the character Katniss Everdeen?",
+          "options": [
+            "Divergent",
+            "The Hunger Games",
+            "Percy Jackson",
+            "The Maze Runner"
+          ],
+          "answer": 1
+        },
+        {
+          "question": "Who is the author of '1984'?",
+          "options": [
+            "Aldous Huxley",
+            "George Orwell",
+            "Ray Bradbury",
+            "Philip K. Dick"
+          ],
+          "answer": 1
+        },
+        {
+          "question": "What is the main theme of 'Pride and Prejudice'?",
+          "options": [
+            "Love and Marriage",
+            "War and Peace",
+            "Political Intrigue",
+            "Social Injustice"
+          ],
+          "answer": 0
+        },
+        {
+          "question":
+              "In which novel does the character Holden Caulfield appear?",
+          "options": [
+            "The Catcher in the Rye",
+            "Catcher in the Rye",
+            "Franny and Zooey",
+            "Nine Stories"
+          ],
+          "answer": 0
+        },
+        {
+          "question": "What is the setting of 'The Lord of the Rings'?",
+          "options": ["Narnia", "Middle-earth", "Hogwarts", "Gondor"],
+          "answer": 1
+        },
+        {
+          "question": "Which author wrote 'The Great Gatsby'?",
+          "options": [
+            "Ernest Hemingway",
+            "F. Scott Fitzgerald",
+            "William Faulkner",
+            "John Steinbeck"
+          ],
+          "answer": 1
+        },
+        {
+          "question": "What genre does 'The Da Vinci Code' fall under?",
+          "options": [
+            "Science Fiction",
+            "Historical Fiction",
+            "Mystery",
+            "Fantasy"
+          ],
+          "answer": 2
+        },
+        {
+          "question":
+              "What is the name of the first book in the 'A Song of Ice and Fire' series?",
+          "options": [
+            "A Clash of Kings",
+            "A Storm of Swords",
+            "A Game of Thrones",
+            "A Feast for Crows"
+          ],
+          "answer": 2
+        },
+        {
+          "question": "Who wrote the 'Chronicles of Narnia' series?",
+          "options": [
+            "J.K. Rowling",
+            "J.R.R. Tolkien",
+            "C.S. Lewis",
+            "Philip Pullman"
+          ],
+          "answer": 2
+        },
+        {
+          "question":
+              "What book is known for the quote 'It was the best of times, it was the worst of times'?",
+          "options": [
+            "Great Expectations",
+            "A Tale of Two Cities",
+            "David Copperfield",
+            "Oliver Twist"
+          ],
+          "answer": 1
+        },
+        {
+          "question": "In 'Moby Dick', what is the name of the ship?",
+          "options": [
+            "The Pequod",
+            "The Nautilus",
+            "The Hispaniola",
+            "The Enterprise"
+          ],
+          "answer": 0
+        },
+        {
+          "question": "Which novel features the character Elizabeth Bennet?",
+          "options": [
+            "Sense and Sensibility",
+            "Emma",
+            "Pride and Prejudice",
+            "Northanger Abbey"
+          ],
+          "answer": 2
+        },
+        {
+          "question":
+              "What is the title of the final book in the 'Harry Potter' series?",
+          "options": [
+            "Harry Potter and the Half-Blood Prince",
+            "Harry Potter and the Order of the Phoenix",
+            "Harry Potter and the Deathly Hallows",
+            "Harry Potter and the Goblet of Fire"
+          ],
+          "answer": 2
+        }
+      ],
+    },
+    {
+      "name": "Space",
+      "list": [
+        {
+          "question":
+              "What is the name of the galaxy that contains our Solar System?",
+          "options": [
+            "Andromeda Galaxy",
+            "Milky Way Galaxy",
+            "Triangulum Galaxy",
+            "Sombrero Galaxy"
+          ],
+          "answer": 1
+        },
+        {
+          "question": "Which planet is known as the Red Planet?",
+          "options": ["Venus", "Earth", "Mars", "Jupiter"],
+          "answer": 2
+        },
+        {
+          "question": "Who was the first human to travel into space?",
+          "options": [
+            "Yuri Gagarin",
+            "Neil Armstrong",
+            "Buzz Aldrin",
+            "John Glenn"
+          ],
+          "answer": 0
+        },
+        {
+          "question": "What is the largest planet in our Solar System?",
+          "options": ["Saturn", "Earth", "Jupiter", "Neptune"],
+          "answer": 2
+        },
+        {
+          "question":
+              "What is the name of the first artificial satellite launched into space?",
+          "options": [
+            "Apollo 11",
+            "Sputnik 1",
+            "Hubble Space Telescope",
+            "Voyager 1"
+          ],
+          "answer": 1
+        },
+        {
+          "question":
+              "What is the name of the force that keeps planets in orbit around the Sun?",
+          "options": ["Magnetism", "Gravity", "Electromagnetism", "Inertia"],
+          "answer": 1
+        },
+        {
+          "question":
+              "Which planet is known for having a prominent ring system?",
+          "options": ["Mars", "Saturn", "Uranus", "Neptune"],
+          "answer": 1
+        },
+        {
+          "question": "What is the closest star to Earth after the Sun?",
+          "options": [
+            "Alpha Centauri",
+            "Sirius",
+            "Proxima Centauri",
+            "Betelgeuse"
+          ],
+          "answer": 2
+        },
+        {
+          "question": "Which spacecraft was the first to land on the Moon?",
+          "options": ["Viking 1", "Luna 2", "Apollo 11", "Mars Rover"],
+          "answer": 2
+        },
+        {
+          "question":
+              "What phenomenon is caused by charged particles from the Sun interacting with Earth's magnetic field?",
+          "options": [
+            "Aurora Borealis",
+            "Solar Eclipse",
+            "Meteor Shower",
+            "Lunar Eclipse"
+          ],
+          "answer": 0
+        },
+        {
+          "question": "Which planet is known for its Great Red Spot?",
+          "options": ["Jupiter", "Mars", "Saturn", "Uranus"],
+          "answer": 0
+        },
+        {
+          "question":
+              "What is the term for a rocky body that orbits the Sun but is smaller than a planet?",
+          "options": ["Asteroid", "Comet", "Meteor", "Dwarf Planet"],
+          "answer": 0
+        },
+        {
+          "question":
+              "What is the name of the current space telescope launched in 1990 that has provided deep space images?",
+          "options": [
+            "Hubble Space Telescope",
+            "James Webb Space Telescope",
+            "Chandra X-ray Observatory",
+            "Spitzer Space Telescope"
+          ],
+          "answer": 0
+        },
+        {
+          "question": "Which planet has the most moons?",
+          "options": ["Saturn", "Jupiter", "Uranus", "Neptune"],
+          "answer": 1
+        },
+        {
+          "question":
+              "What is the name of the first human-made object to leave the Solar System?",
+          "options": ["Voyager 1", "Voyager 2", "Pioneer 10", "New Horizons"],
+          "answer": 0
+        }
       ],
     }
   ];

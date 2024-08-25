@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
+import 'package:quiz_app_clone/view/category_screen/category_screen.dart';
 import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 import 'package:quiz_app_clone/view/quiz_screen/quiz_screen.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen(
-      {super.key, required this.rightAnsCount, required this.wrongAnsCount});
+      {super.key,
+      required this.rightAnsCount,
+      required this.wrongAnsCount,
+      required this.questions});
 
   final int rightAnsCount;
   final int wrongAnsCount;
+  final List questions;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -74,7 +79,7 @@ class _ResultScreenState extends State<ResultScreen> {
           ),
         ),
         Text(
-          "${widget.rightAnsCount} / ${QuizDatabase.questions.length}",
+          "${widget.rightAnsCount} / ${widget.questions.length}",
           style: TextStyle(
             color: Colors.amber,
             fontSize: 32,
@@ -105,54 +110,104 @@ class _ResultScreenState extends State<ResultScreen> {
 
   Widget _buildRestartButtonSection(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 35, 25, 0),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(13),
-        onTap: () {
-          QuizDatabase.questions.shuffle();
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => QuizScreen(),
-            ),
-          );
-        },
-        child: Container(
-          height: 60,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: ColorConstants.fontWhite,
-            borderRadius: BorderRadius.circular(13),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.replay,
-                color: ColorConstants.mainBlack,
-                size: 26,
-              ),
-              SizedBox(width: 10),
-              Text(
-                "Restart",
-                style: TextStyle(
-                  color: ColorConstants.mainBlack,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -0.7,
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(13),
+              onTap: () {
+                widget.questions.shuffle();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuizScreen(
+                      questionList: widget.questions,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                height: 60,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorConstants.fontWhite,
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.replay,
+                      color: ColorConstants.mainBlack,
+                      size: 26,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Restart",
+                      style: TextStyle(
+                        color: ColorConstants.mainBlack,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.7,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+          SizedBox(width: 25),
+          Expanded(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(13),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryScreen(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 60,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorConstants.fontWhite,
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      color: ColorConstants.mainBlack,
+                      size: 26,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      "Menu",
+                      style: TextStyle(
+                        color: ColorConstants.mainBlack,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.7,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   String _getString() {
     double scorePercentage =
-        (widget.rightAnsCount / QuizDatabase.questions.length) * 100;
-    if (scorePercentage >= 50) {
+        (widget.rightAnsCount / widget.questions.length) * 100;
+    if (scorePercentage >= 45) {
       if (scorePercentage >= 80) {
         return "Congratulations !";
       } else {

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz_app_clone/utils/color_constants.dart';
-import 'package:quiz_app_clone/view/quiz_database/quiz_database.dart';
 import 'package:quiz_app_clone/view/quiz_screen/widgets/options_card.dart';
 import 'package:quiz_app_clone/view/result_screen/result_screen.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  const QuizScreen({super.key, required this.questionList});
+
+  final List questionList;
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -42,7 +44,7 @@ class _QuizScreenState extends State<QuizScreen> {
       surfaceTintColor: ColorConstants.mainBlack,
       actions: <Widget>[
         Text(
-          "${questionIndex + 1}/${QuizDatabase.questions.length}",
+          "${questionIndex + 1}/${widget.questionList.length}",
           style: TextStyle(
             color: ColorConstants.blue,
             fontSize: 14,
@@ -60,7 +62,7 @@ class _QuizScreenState extends State<QuizScreen> {
         4,
         (index) => OptionsCard(
           borderColor: _getColor(index),
-          questionIndex: questionIndex,
+          options: widget.questionList[questionIndex]["options"],
           optionIndex: index,
           selectedIcon: _getOptionIcon(index),
           onOptionTap: () {
@@ -68,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
               setState(() {
                 selectedAnswerIndex = index;
                 if (selectedAnswerIndex ==
-                    QuizDatabase.questions[questionIndex]["answer"]) {
+                    widget.questionList[questionIndex]["answer"]) {
                   rightAnswerCount++;
                 } else {
                   wrongAnswerCount++;
@@ -91,7 +93,7 @@ class _QuizScreenState extends State<QuizScreen> {
               onTap: () {
                 setState(() {
                   selectedAnswerIndex = null;
-                  if (questionIndex < QuizDatabase.questions.length - 1) {
+                  if (questionIndex < widget.questionList.length - 1) {
                     questionIndex++;
                   } else {
                     Navigator.pushReplacement(
@@ -100,6 +102,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         builder: (context) => ResultScreen(
                           rightAnsCount: rightAnswerCount,
                           wrongAnsCount: wrongAnswerCount,
+                          questions: widget.questionList,
                         ),
                       ),
                     );
@@ -139,7 +142,7 @@ class _QuizScreenState extends State<QuizScreen> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            QuizDatabase.questions[questionIndex]["question"],
+            widget.questionList[questionIndex]["question"],
             textAlign: TextAlign.justify,
             style: TextStyle(
               color: ColorConstants.fontWhite,
@@ -148,7 +151,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
           ),
         ),
-        selectedAnswerIndex == QuizDatabase.questions[questionIndex]["answer"]
+        selectedAnswerIndex == widget.questionList[questionIndex]["answer"]
             ? LottieBuilder.asset("assets/animations/popper.json",
                 width: double.infinity, height: 300)
             : SizedBox(),
@@ -160,30 +163,30 @@ class _QuizScreenState extends State<QuizScreen> {
     if (selectedAnswerIndex != null) {
       if (selectedAnswerIndex == index) {
         if (selectedAnswerIndex ==
-            QuizDatabase.questions[questionIndex]["answer"]) {
-          return Icons.check_box_rounded;
+            widget.questionList[questionIndex]["answer"]) {
+          return FontAwesomeIcons.circleCheck;
         } else {
-          return Icons.disabled_by_default_rounded;
+          return FontAwesomeIcons.circleXmark;
         }
       }
-      if (index == QuizDatabase.questions[questionIndex]["answer"]) {
-        return Icons.check_box_rounded;
+      if (index == widget.questionList[questionIndex]["answer"]) {
+        return FontAwesomeIcons.circleCheck;
       }
     }
-    return Icons.check_box_outline_blank_rounded;
+    return FontAwesomeIcons.circle;
   }
 
   Color _getColor(int index) {
     if (selectedAnswerIndex != null) {
       if (selectedAnswerIndex == index) {
         if (selectedAnswerIndex ==
-            QuizDatabase.questions[questionIndex]["answer"]) {
+            widget.questionList[questionIndex]["answer"]) {
           return Colors.green;
         } else {
           return Colors.red;
         }
       }
-      if (index == QuizDatabase.questions[questionIndex]["answer"]) {
+      if (index == widget.questionList[questionIndex]["answer"]) {
         return Colors.green;
       }
     }
