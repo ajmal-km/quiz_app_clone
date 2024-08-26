@@ -1,80 +1,8 @@
 class QuizDatabase {
-  static List questions = [
-    {
-      "question": "What is the capital of France?",
-      "options": ["Berlin", "Madrid", "Paris", "Rome"],
-      "answer": 2, // Index of the correct answer ("Paris")
-    },
-    {
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "answer": 1, // Index of the correct answer ("Mars")
-    },
-    {
-      "question": "What is the largest ocean on Earth?",
-      "options": [
-        "Atlantic Ocean",
-        "Indian Ocean",
-        "Arctic Ocean",
-        "Pacific Ocean"
-      ],
-      "answer": 3, // Index of the correct answer ("Pacific Ocean")
-    },
-    {
-      "question": "Who wrote 'To Kill a Mockingbird'?",
-      "options": [
-        "Harper Lee",
-        "Mark Twain",
-        "Ernest Hemingway",
-        "F. Scott Fitzgerald"
-      ],
-      "answer": 0, // Index of the correct answer ("Harper Lee")
-    },
-    {
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Au", "Ag", "Pb", "Fe"],
-      "answer": 0, // Index of the correct answer ("Au")
-    },
-    {
-      "question": "What year did the Titanic sink?",
-      "options": ["1912", "1905", "1898", "1923"],
-      "answer": 0, // Index of the correct answer ("1912")
-    },
-    {
-      "question": "Who painted the Mona Lisa?",
-      "options": [
-        "Vincent Van Gogh",
-        "Pablo Picasso",
-        "Leonardo da Vinci",
-        "Claude Monet"
-      ],
-      "answer": 2, // Index of the correct answer ("Leonardo da Vinci")
-    },
-    {
-      "question": "What is the hardest natural substance on Earth?",
-      "options": ["Gold", "Iron", "Diamond", "Platinum"],
-      "answer": 2, // Index of the correct answer ("Diamond")
-    },
-    {
-      "question": "How many continents are there on Earth?",
-      "options": ["5", "6", "7", "8"],
-      "answer": 2, // Index of the correct answer ("7")
-    },
-    {
-      "question": "What is the largest mammal in the world?",
-      "options": [
-        "African Elephant",
-        "Blue Whale",
-        "Giraffe",
-        "Great White Shark"
-      ],
-      "answer": 1, // Index of the correct answer ("Blue Whale")
-    },
-  ];
-
   static List quizList = [
     {
       "name": "Sports",
+      "image": "https://i.pinimg.com/236x/82/3f/a4/823fa495dd3e2bef9bb7508b6a6c18c6.jpg",
       "list": [
         {
           "question": "Which country won the FIFA World Cup in 2022?",
@@ -176,6 +104,7 @@ class QuizDatabase {
     },
     {
       "name": "Chemistry",
+      "image": "https://i.pinimg.com/236x/a3/95/5d/a3955d32926b2c638fbd95bdd0a0a099.jpg",
       "list": [
         {
           "question": "What is the chemical symbol for water?",
@@ -286,6 +215,7 @@ class QuizDatabase {
     },
     {
       "name": "Math",
+      "image": "https://i.pinimg.com/236x/48/f7/ad/48f7adc4f00bad570d64b350fef4f27b.jpg",
       "list": [
         {
           "question": "What is the value of π (pi) to two decimal places?",
@@ -380,6 +310,7 @@ class QuizDatabase {
     },
     {
       "name": "History",
+      "image": "https://i.pinimg.com/474x/55/9f/e0/559fe0c83865058752ee379fbd0dbe62.jpg",
       "list": [
         {
           "question": "Who was the first President of the United States?",
@@ -544,6 +475,7 @@ class QuizDatabase {
     },
     {
       "name": "Biological",
+      "image": "https://i.pinimg.com/236x/14/c7/2c/14c72cd09357c7be35b803df02a83937.jpg",
       "list": [
         {
           "question": "What is the basic unit of life?",
@@ -689,6 +621,7 @@ class QuizDatabase {
     },
     {
       "name": "Geography",
+      "image": "https://i.pinimg.com/236x/a4/9c/c2/a49cc278c1964400dd1d278d2770d0d0.jpg",
       "list": [
         {
           "question": "What is the largest continent by land area?",
@@ -813,6 +746,7 @@ class QuizDatabase {
     },
     {
       "name": "Technology",
+      "image": "https://i.pinimg.com/236x/0f/92/78/0f927893b8bb3c5f33e8570319e06de7.jpg",
       "list": [
         {
           "question": "What is the main purpose of a CPU?",
@@ -932,6 +866,7 @@ class QuizDatabase {
     },
     {
       "name": "Books",
+      "image": "https://i.pinimg.com/236x/92/df/9b/92df9bc81af05dba2bb22a47171f9837.jpg",
       "list": [
         {
           "question": "Who wrote 'To Kill a Mockingbird'?",
@@ -1088,6 +1023,7 @@ class QuizDatabase {
     },
     {
       "name": "Space",
+      "image": "https://i.pinimg.com/236x/c7/38/0d/c7380d23417e443596f2ec5d1655e6b5.jpg",
       "list": [
         {
           "question":

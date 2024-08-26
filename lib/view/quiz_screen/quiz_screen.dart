@@ -19,6 +19,14 @@ class _QuizScreenState extends State<QuizScreen> {
   int questionIndex = 0;
   int rightAnswerCount = 0;
   int wrongAnswerCount = 0;
+  double value = 0;
+
+  @override
+  void initState() {
+    widget.questionList.shuffle();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,16 +50,43 @@ class _QuizScreenState extends State<QuizScreen> {
     return AppBar(
       backgroundColor: ColorConstants.mainBlack,
       surfaceTintColor: ColorConstants.mainBlack,
+      leadingWidth: 60,
+      toolbarHeight: 80,
+      titleSpacing: 10,
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(
+          Icons.close,
+          color: ColorConstants.fontWhite,
+        ),
+      ),
+      centerTitle: true,
+      title: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 270,
+            child: LinearProgressIndicator(
+              minHeight: 15,
+              backgroundColor: ColorConstants.containerGrey,
+              value: (questionIndex + 1) / widget.questionList.length,
+              color: ColorConstants.blue,
+              borderRadius: BorderRadius.circular(13),
+            ),
+          ),
+        ],
+      ),
       actions: <Widget>[
         Text(
           "${questionIndex + 1}/${widget.questionList.length}",
           style: TextStyle(
             color: ColorConstants.blue,
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 15),
       ],
     );
   }

@@ -84,7 +84,7 @@ class CategoryScreen extends StatelessWidget {
             itemBuilder: (context, index) => CategoryGrid(
               title: QuizDatabase.quizList[index]["name"],
               questions: QuizDatabase.quizList[index]["list"],
-              image: ImageConstants.categoryImages[index],
+              image: QuizDatabase.quizList[index]["image"],
               onGridTap: () {
                 Navigator.push(
                   context,
