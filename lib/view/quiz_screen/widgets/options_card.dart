@@ -6,14 +6,12 @@ class OptionsCard extends StatelessWidget {
   const OptionsCard({
     super.key,
     required this.option,
-    required this.optionIndex,
     required this.borderColor,
     required this.selectedIcon,
     this.onOptionTap,
   });
 
   final String option;
-  final int optionIndex;
   final Color borderColor;
   final IconData selectedIcon;
   final void Function()? onOptionTap;

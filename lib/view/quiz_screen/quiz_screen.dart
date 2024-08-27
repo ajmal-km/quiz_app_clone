@@ -98,7 +98,6 @@ class _QuizScreenState extends State<QuizScreen> {
         (index) => OptionsCard(
           borderColor: _getColor(index),
           option: widget.questionList[questionIndex]["options"][index],
-          optionIndex: index,
           selectedIcon: _getOptionIcon(index),
           onOptionTap: () {
             if (selectedAnswerIndex == null) {
