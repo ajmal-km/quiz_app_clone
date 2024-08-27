@@ -5,14 +5,14 @@ import 'package:quiz_app_clone/utils/color_constants.dart';
 class OptionsCard extends StatelessWidget {
   const OptionsCard({
     super.key,
-    required this.options,
+    required this.option,
     required this.optionIndex,
     required this.borderColor,
     required this.selectedIcon,
     this.onOptionTap,
   });
 
-  final List options;
+  final String option;
   final int optionIndex;
   final Color borderColor;
   final IconData selectedIcon;
@@ -35,7 +35,7 @@ class OptionsCard extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Text(
-                options[optionIndex],
+                option,
                 style: TextStyle(
                   color: ColorConstants.fontWhite,
                   fontSize: 15,
