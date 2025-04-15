@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quiz_app_clone/utils/color_constants.dart';
+import '../../../utils/color_constants.dart';
+import 'package:flutter/material.dart';
 
 class OptionsCard extends StatelessWidget {
   const OptionsCard({
@@ -14,7 +14,7 @@ class OptionsCard extends StatelessWidget {
   final String option;
   final Color borderColor;
   final IconData selectedIcon;
-  final void Function()? onOptionTap;
+  final VoidCallback? onOptionTap;
 
   @override
   Widget build(BuildContext context) {

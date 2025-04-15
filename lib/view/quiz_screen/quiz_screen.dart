@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../result_screen/result_screen.dart';
+import '../../utils/color_constants.dart';
+import 'package:flutter/material.dart';
+import 'widgets/question_widget.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quiz_app_clone/utils/color_constants.dart';
-import 'package:quiz_app_clone/view/quiz_screen/widgets/options_card.dart';
-import 'package:quiz_app_clone/view/result_screen/result_screen.dart';
+import 'widgets/custom_button.dart';
+import 'widgets/options_card.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key, required this.questionList});
@@ -31,100 +33,95 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.mainBlack,
-      appBar: _buildAppBarSection(),
+      appBar: AppBar(
+        backgroundColor: ColorConstants.mainBlack,
+        surfaceTintColor: ColorConstants.mainBlack,
+        leadingWidth: 60,
+        toolbarHeight: 80,
+        titleSpacing: 10,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.close,
+            color: ColorConstants.fontWhite,
+          ),
+        ),
+        centerTitle: true,
+        title: Row(
+          children: <Widget>[
+            SizedBox(
+              width: 270,
+              child: LinearProgressIndicator(
+                minHeight: 15,
+                backgroundColor: ColorConstants.containerGrey,
+                value: (questionIndex + 1) / widget.questionList.length,
+                color: ColorConstants.blue,
+                borderRadius: BorderRadius.circular(13),
+              ),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          Text(
+            "${questionIndex + 1}/${widget.questionList.length}",
+            style: TextStyle(
+              color: ColorConstants.blue,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(width: 15),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
           children: <Widget>[
-            _buildQuestionSection(),
+            Stack(
+              children: <Widget>[
+                QuestionWidget(
+                    content: widget.questionList[questionIndex]["question"]),
+                selectedAnswerIndex ==
+                        widget.questionList[questionIndex]["answer"]
+                    ? LottieBuilder.asset("assets/animations/popper.json",
+                        width: double.infinity, height: 300)
+                    : SizedBox(),
+              ],
+            ),
             SizedBox(height: 10),
-            _buildOptionSelectionSection(),
+            Column(
+              children: List.generate(
+                4,
+                (index) => OptionsCard(
+                  borderColor: _getColor(index),
+                  option: widget.questionList[questionIndex]["options"][index],
+                  selectedIcon: _getOptionIcon(index),
+                  onOptionTap: () {
+                    if (selectedAnswerIndex == null) {
+                      setState(() {
+                        selectedAnswerIndex = index;
+                        if (selectedAnswerIndex ==
+                            widget.questionList[questionIndex]["answer"]) {
+                          rightAnswerCount++;
+                        } else {
+                          wrongAnswerCount++;
+                        }
+                      });
+                    }
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: _buildNextButtonSection(context),
-    );
-  }
-
-  AppBar _buildAppBarSection() {
-    return AppBar(
-      backgroundColor: ColorConstants.mainBlack,
-      surfaceTintColor: ColorConstants.mainBlack,
-      leadingWidth: 60,
-      toolbarHeight: 80,
-      titleSpacing: 10,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(
-          Icons.close,
-          color: ColorConstants.fontWhite,
-        ),
-      ),
-      centerTitle: true,
-      title: Row(
-        children: <Widget>[
-          SizedBox(
-            width: 270,
-            child: LinearProgressIndicator(
-              minHeight: 15,
-              backgroundColor: ColorConstants.containerGrey,
-              value: (questionIndex + 1) / widget.questionList.length,
-              color: ColorConstants.blue,
-              borderRadius: BorderRadius.circular(13),
-            ),
-          ),
-        ],
-      ),
-      actions: <Widget>[
-        Text(
-          "${questionIndex + 1}/${widget.questionList.length}",
-          style: TextStyle(
-            color: ColorConstants.blue,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        SizedBox(width: 15),
-      ],
-    );
-  }
-
-  Widget _buildOptionSelectionSection() {
-    return Column(
-      children: List.generate(
-        4,
-        (index) => OptionsCard(
-          borderColor: _getColor(index),
-          option: widget.questionList[questionIndex]["options"][index],
-          selectedIcon: _getOptionIcon(index),
-          onOptionTap: () {
-            if (selectedAnswerIndex == null) {
-              setState(() {
-                selectedAnswerIndex = index;
-                if (selectedAnswerIndex ==
-                    widget.questionList[questionIndex]["answer"]) {
-                  rightAnswerCount++;
-                } else {
-                  wrongAnswerCount++;
-                }
-              });
-            }
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget? _buildNextButtonSection(BuildContext context) {
-    return selectedAnswerIndex == null
-        ? null
-        : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(13),
-              onTap: () {
+      bottomNavigationBar: selectedAnswerIndex == null
+          ? null
+          : CustomButton(
+              label: "Next",
+              onPressed: () {
                 setState(() {
                   selectedAnswerIndex = null;
                   if (questionIndex < widget.questionList.length - 1) {
@@ -143,53 +140,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   }
                 });
               },
-              child: Container(
-                height: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: ColorConstants.blue,
-                  borderRadius: BorderRadius.circular(13),
-                ),
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    color: ColorConstants.fontWhite,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: -1,
-                  ),
-                ),
-              ),
             ),
-          );
-  }
-
-  Widget _buildQuestionSection() {
-    return Stack(
-      children: <Widget>[
-        Container(
-          height: 300,
-          alignment: Alignment.centerLeft,
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: ColorConstants.containerGrey,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Text(
-            widget.questionList[questionIndex]["question"],
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-              color: ColorConstants.fontWhite,
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-        selectedAnswerIndex == widget.questionList[questionIndex]["answer"]
-            ? LottieBuilder.asset("assets/animations/popper.json",
-                width: double.infinity, height: 300)
-            : SizedBox(),
-      ],
     );
   }
 
